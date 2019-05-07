@@ -1,0 +1,101 @@
+import cosas.*/*knightRider  bumblebee */
+
+test "el nivel de peligrosidad de Knight Rider es 10" {
+	assert.equals(10, knightRider.nivelPeligrosidad())
+}
+test "el Peso de Knight Rider es 500" {
+	assert.equals(500, knightRider.peso())
+}
+test "el nivel de peligrosidad de bumblebee transformado en auto es 15" {
+	assert.equals(15, bumblebee.nivelPeligrosidad())
+}
+test "el nivel de peligrosidad de bumblebee transformado en autobot es 30" {
+	bumblebee.transformar()
+	assert.equals(30, bumblebee.nivelPeligrosidad())
+}
+test "el Peso de bumblebee es 800" {
+	assert.equals(800, bumblebee.peso())
+}
+test "el Peso de un paquete de ladrillos de 20 es 40" {
+	paqueteDeLadrillos.cantidad(20)
+	assert.equals(40, paqueteDeLadrillos.peso())
+}
+test "peligrosidad de Ladrillos es 2" {
+	assert.equals(2, paqueteDeLadrillos.nivelPeligrosidad())
+}
+test "el Peso de un paquete de arena previamente configurado es 10kg y luego varia a ser 20" {
+	arena.peso(10)
+	assert.equals(10, arena.peso())
+	arena.peso(20)
+	assert.notEquals(10, arena.peso())
+	assert.equals(20, arena.peso())
+}
+test "peligrosidad de la arena es 1" {
+	assert.equals(1, arena.nivelPeligrosidad())
+}
+test "peligrosidad de la bateria sin misiles es 0" {
+	bateria.sacarMisiles()
+	assert.equals(0, bateria.nivelPeligrosidad())
+}
+test "el peso de la bateria sin misiles es 200" {
+	bateria.sacarMisiles()
+	assert.equals(200, bateria.peso())
+}
+test "el peso de la bateria con misiles es 300" {
+	bateria.equiparMisiles()
+	assert.equals(300, bateria.peso())
+}
+test "peligrosidad de la bateria con misiles es 100" {
+	bateria.equiparMisiles()
+	assert.equals(100, bateria.nivelPeligrosidad())
+}
+test "peligrosidad de un contenedor vacio  es 0" {
+	assert.equals(0, contenedor.nivelPeligrosidad())
+}
+test "peso de un contenedor vacio es 100" {
+	assert.equals(100, contenedor.peso())
+}
+test "peso de un contenedor  es 600" {
+	contenedor.agregar(knightRider)
+	assert.equals(600, contenedor.peso())
+}
+test "peligrosidad de un contenedor con un knightRider es 10" {
+	contenedor.agregar(knightRider)
+	assert.equals(10, contenedor.nivelPeligrosidad())
+}
+test "peso de un contenedor con un knightRider  es 600" {
+	contenedor.agregar(knightRider)
+	assert.equals(600, contenedor.peso())
+}
+test "peligrosidad de un contenedor con un knightRider + un bumbble sin transformar es 15" {
+	contenedor.agregar(knightRider)
+	contenedor.agregar(bumblebee)
+	assert.equals(15, contenedor.nivelPeligrosidad())
+}
+test "peso de un contenedor con un knightRider  un bumbble  es 1400" {
+	contenedor.agregar(knightRider)
+	contenedor.agregar(bumblebee)
+	assert.equals(1400, contenedor.peso())
+}
+test "peligrosidad de un residuo es 200" {
+	assert.equals(200, residuo.nivelPeligrosidad())
+}
+test "peso de un residuo es 200" {
+	residuo.peso(200)
+	assert.equals(200, residuo.peso())
+}
+test "peso de un residuo es 200 y luego cambia a 100" {
+	residuo.peso(200)
+	assert.equals(200, residuo.peso())
+	residuo.peso(100)
+	assert.notEquals(200, residuo.peso())
+	assert.equals(100, residuo.peso())
+}
+test "peso de un knightRider embalado es 500" {
+	embalaje.embalar(knightRider)
+	assert.equals(500, embalaje.peso())
+}
+test "peligrosidad de un knightRider embalado es 5" {
+	embalaje.embalar(knightRider)
+	assert.equals(5, embalaje.nivelPeligrosidad())
+}

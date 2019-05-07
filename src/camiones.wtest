@@ -37,10 +37,10 @@ import camion.*
 	test "El camion carga a bumbumble y kinght rider compara son mas peligrosos que un paquete de ladrillos" {
 	camion.cargar(bumblebee)
 	camion.cargar(knightRider)
-	assert.equals([bumblebee, knightRider], camion.objetosMasPeligrososQue(ladrillos))
+	assert.equals([bumblebee, knightRider], camion.objetosMasPeligrososQue(paqueteDeLadrillos))
 	}
 	test "El camion no carga nada y compara que obejtos son mas peligrosos que los ladrillos" {
-	assert.equals([], camion.objetosMasPeligrososQue(ladrillos))
+	assert.equals([], camion.objetosMasPeligrososQue(paqueteDeLadrillos))
 	}
 	test "El camion carga a bumbumble y kinght rider y se fija de poder circular en una ruta con nivel maximo 50" {
 	camion.cargar(bumblebee)
