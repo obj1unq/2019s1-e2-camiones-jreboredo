@@ -10,3 +10,7 @@ object bumblebee {
 	method nivelPeligrosidad() { return if (transformadoEnAuto) { 15 } else { 30 }  }
 	method transformar() { transformadoEnAuto = not transformadoEnAuto }
 }
+
+object ladrillos{
+	method nivelPeligrosidad(){ return 1}
+}

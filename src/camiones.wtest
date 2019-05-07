@@ -1,0 +1,57 @@
+import cosas.*
+import camion.*
+
+	test "El peso del camion vacio debe ser 1000" {
+	assert.equals(1000, camion.pesoTotal())
+	}
+	test "El peso del camion con un bumblebee debe ser 1800" {
+	camion.cargar(bumblebee)
+	assert.equals(1800, camion.pesoTotal())
+	}
+	test "El peso del camion con un bumblebee y un kingh rider debe ser 2300" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.equals(2300, camion.pesoTotal())
+	}
+	test "El camion carga a bumbumble y kinght rider y no esta excedido de peso" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.notThat(camion.excedidoDePeso())
+	}
+	test "El camion carga a bumbumble y kinght rider dos veces y esta excedido de peso" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	camion.cargar(knightRider)
+	assert.that(camion.excedidoDePeso())
+	}
+	test "El camion carga a bumbumble y kinght rider y no tiene elementos Peligrosos cuando el nivel de peligrosidad es 5" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.equals([bumblebee, knightRider],camion.objetosPeligrosos(5))
+	}
+	test "El camion carga a bumbumble y kinght rider y no tiene elementos Peligrosos cuando el nivel de peligrosidad es 50" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.equals([], camion.objetosPeligrosos(50))
+	}
+	test "El camion carga a bumbumble y kinght rider compara son mas peligrosos que un paquete de ladrillos" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.equals([bumblebee, knightRider], camion.objetosMasPeligrososQue(ladrillos))
+	}
+	test "El camion no carga nada y compara que obejtos son mas peligrosos que los ladrillos" {
+	assert.equals([], camion.objetosMasPeligrososQue(ladrillos))
+	}
+	test "El camion carga a bumbumble y kinght rider y se fija de poder circular en una ruta con nivel maximo 50" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.notThat(camion.puedeCircularEnRuta(50))
+	}
+	test "El camion carga a bumbumble y kinght rider y se fija de poder circular en una ruta con nivel maximo 1" {
+	camion.cargar(bumblebee)
+	camion.cargar(knightRider)
+	assert.that(camion.puedeCircularEnRuta(1))
+	}
+	
+	
+	
