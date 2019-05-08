@@ -1,11 +1,10 @@
-import cosas.*
-
 object camion {
 	var property peso = 1000
 	var property pesoMaximo = 2500
 	const property cosas = []
 	
 	method cargar(unaCosa) {
+		unaCosa.reaccionDeCarga()
 		cosas.add(unaCosa)
 	}
 	method descargar(unaCosa){
@@ -28,5 +27,14 @@ object camion {
 	}
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
 		return self.cosas().any({cosa => cosa.nivelPeligrosidad() >= nivelMaximoPeligrosidad})
+	}
+	method tieneAlgoQuePesaEntre(min, max){
+		return self.cosas().any({cosa => (cosa.peso()).between (min, max)})
+	}
+	method cosaMasPesada(){
+		return self.cosas().max({cosa => cosa.peso()})
+	}
+	method pesos(){
+		return self.cosas().map({cosa => cosa.peso()})
 	}
 }

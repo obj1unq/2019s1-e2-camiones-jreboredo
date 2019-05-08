@@ -1,4 +1,4 @@
-import cosas.*/*knightRider  bumblebee */
+import cosas.*
 
 test "el nivel de peligrosidad de Knight Rider es 10" {
 	assert.equals(10, knightRider.nivelPeligrosidad())
@@ -98,4 +98,132 @@ test "peso de un knightRider embalado es 500" {
 test "peligrosidad de un knightRider embalado es 5" {
 	embalaje.embalar(knightRider)
 	assert.equals(5, embalaje.nivelPeligrosidad())
+}
+test "Los bultos de bumbumble es 2" {
+	assert.equals(2, bumblebee.bultos())
+}
+test "Los bultos de bumbumble no es 1" {
+	assert.notEquals(1, bumblebee.bultos())
+}
+test "Los bultos de KnightRider es 1" {
+	assert.equals(1, knightRider.bultos())
+}
+test "Los bultos de bumbumble no es 2" {
+	assert.notEquals(2, knightRider.bultos())
+}
+test "Los bultos de arena  es 1" {
+	assert.equals(1, arena.bultos())
+}
+test "Los bultos de arena  no es 2" {
+	assert.notEquals(2, arena.bultos())
+}
+test "Los bultos de residuos  es 1" {
+	assert.equals(1, residuo.bultos())
+}
+test "Los bultos de residuos  no es 2" {
+	assert.notEquals(2, residuo.bultos())
+}
+test "Los bultos de embalaje es 2" {
+	assert.equals(2, embalaje.bultos())
+}
+test "Los bultos de embalaje no es 1" {
+	assert.notEquals(1, embalaje.bultos())
+}
+test "Los bultos de ladrillo con cantidad 10 es 1" {
+	paqueteDeLadrillos.cantidad(10)
+	assert.equals(1, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 10 no tiene que ser 1"  {
+	paqueteDeLadrillos.cantidad(10)
+	assert.notEquals(2, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 101 es 2" {
+	paqueteDeLadrillos.cantidad(101)
+	assert.equals(2, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 101 no tiene que ser 3"  {
+	paqueteDeLadrillos.cantidad(101)
+	assert.notEquals(3, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 299 es 2" {
+	paqueteDeLadrillos.cantidad(299)
+	assert.equals(2, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 299 no tiene que ser 3"  {
+	paqueteDeLadrillos.cantidad(299)
+	assert.notEquals(3, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 301 es 3" {
+	paqueteDeLadrillos.cantidad(301)
+	assert.equals(3, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de ladrillo con cantidad 301 no tiene que ser 2"  {
+	paqueteDeLadrillos.cantidad(301)
+	assert.notEquals(2, paqueteDeLadrillos.bultos())
+}
+test "Los bultos de bateria sin misiles  es 1" {
+	bateria.sacarMisiles()
+	assert.equals(1, bateria.bultos())
+}
+test "Los bultos de bateria sin misiles no es 2" {
+	bateria.sacarMisiles()
+	assert.notEquals(2, bateria.bultos())
+}
+test "Los bultos de bateria sin misiles  es 2" {
+	bateria.equiparMisiles()
+	assert.equals(2, bateria.bultos())
+}
+test "Los bultos de bateria sin misiles no es 1" {
+	bateria.equiparMisiles()
+	assert.notEquals(1, bateria.bultos())
+}
+test "Los bultos de un contenedor vacios  es 1" {
+	bateria.equiparMisiles()
+	assert.equals(1, contenedor.bultos())
+}
+test "Los bultos de un contenedor vacios no es 2" {
+	bateria.equiparMisiles()
+	assert.notEquals(2, contenedor.bultos())
+}
+test "Los bultos de un contenedor con un kinkgrider y arena  es 3" {
+	contenedor.agregar(knightRider)
+	contenedor.agregar(arena)
+	assert.equals(3, contenedor.bultos())
+}
+test "Los bultos de un contenedor con un kinkgrider y arenano es 2" {
+	contenedor.agregar(knightRider)
+	contenedor.agregar(arena)
+	assert.notEquals(2, contenedor.bultos())
+}
+test "Reaccion de carga de Bumbumblee" {
+	assert.that(bumblebee.esAuto())
+	bumblebee.reaccionDeCarga()
+	assert.notThat(bumblebee.esAuto())
+}
+test "Reaccion de carga de ladrillos" {
+	paqueteDeLadrillos.cantidad(10)
+	assert.equals(10,paqueteDeLadrillos.cantidad())
+	paqueteDeLadrillos.reaccionDeCarga()
+	assert.equals(22,paqueteDeLadrillos.cantidad())
+}
+test "Reaccion de carga de arena" {
+	assert.equals(0,arena.peso())
+	arena.reaccionDeCarga()
+	assert.equals(20,arena.peso())
+}
+test "Reaccion de carga de bateria de Misiles" {
+	assert.notThat(bateria.misiles())
+	bateria.reaccionDeCarga()
+	assert.that(bateria.misiles())
+}
+test "Reaccion de carga de contenedor con arena" {
+	contenedor.agregar(arena)
+	assert.equals(100, contenedor.peso())
+	contenedor.reaccionDeCarga()
+	assert.equals(120, contenedor.peso())
+}
+test "Reaccion de carga de residuos" {
+	assert.equals(0, residuo.peso())
+	residuo.reaccionDeCarga()
+	assert.equals(15, residuo.peso())
 }
